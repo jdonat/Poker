@@ -11,7 +11,7 @@ public class Server {
     private static ServerSocket server;
     //socket server port on which it will listen
     private static int port = 9876;
-  public static void main(String[] args) throws IOException, ClassNotFoundException{
+  public static void main() throws IOException, ClassNotFoundException{
         //create the socket server object
         server = new ServerSocket(port);
         //keep listens indefinitely until receives 'exit' call or program terminates
