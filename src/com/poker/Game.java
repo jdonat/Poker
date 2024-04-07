@@ -14,7 +14,6 @@ public class Game {
         this.user = user;
         this.gameCfg = new GameConfig();
         this.playerList = new ArrayList<>();
-        this.playerList.add(new Player(1, this.user.getName(), true, DefaultConfig.gameInitStack));
     }
     public int launchServer(){
         this.server = new Server();
@@ -25,9 +24,9 @@ public class Game {
         return 0;
     }
     private void createPlayerList(){
-        for(int i=1; i<this.gameCfg.getPlNb(); i++){
-            if(i==1)
-                this.playerList.add(new Player(i, this.user.getName(), true, this.gameCfg.getInitStack()));
+        for(int i=0; i<this.gameCfg.getPlNb(); i++){
+            if(i==0)
+                this.playerList.add(new Player(0, this.user.getName(), true, this.gameCfg.getInitStack()));
             else
                 this.playerList.add(new Player(i, DefaultConfig.playerName, false, this.gameCfg.getInitStack()));
         }
@@ -35,8 +34,7 @@ public class Game {
     public int launchSolo(){
         this.createPlayerList();
         this.tournament = new Tournament(this.playerList, this.gameCfg);
-        this.tournament.startTournament();
-        this.tournament.Play();
+        this.tournament.start();
         return 0;
     }
 

@@ -3,7 +3,7 @@ package com.poker;
 import com.poker.DefaultConfig;
 import java.util.ArrayList;
 
-public class Tournament {
+public class Tournament extends Thread{
     private ArrayList<Table> tableList;
     private ArrayList<Player> playerList;
     private GameConfig config;
@@ -18,7 +18,7 @@ public class Tournament {
     }
     public void startTournament(){
         int tableNb = 1;
-        int playerCnt=0;
+        int playerCnt=-1;
         int tableCnt = 1;
         boolean lastOfTable = false;
         ArrayList<Player> plLst = new ArrayList<Player>();
@@ -31,12 +31,13 @@ public class Tournament {
             }
             pl.setTableId(tableCnt);
             plLst.add(pl);
-            if(playerCnt % this.playerPerTable == 0){
+            if(playerCnt % this.playerPerTable == (this.playerPerTable-1)){
                 this.tableList.add(new Table(tableCnt, plLst));
                 plLst = new ArrayList<Player>();
                 lastOfTable = true;
             }
         }
+        Logger.Log("Tournament start !");
         Logger.Log(Integer.toString(playerCnt)+" players on "+Integer.toString(tableCnt)+" tables : "+Integer.toString(this.playerPerTable)+" players per table");
     }
     public void Play(){
@@ -45,5 +46,9 @@ public class Tournament {
             this.dealerList.add(deal);
             deal.start();
         }
+    }
+    public void run() {
+        this.startTournament();
+        this.Play();
     }
 }

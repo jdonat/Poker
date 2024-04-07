@@ -5,11 +5,22 @@ public class Card {
     private Color color;
     private int id;
     private String visibility;
+    private boolean inOut;
+    private int placeId;
     public Card(int i, int c, int v){
         this.id =i;
         this.color = new Color(c);
         this.value = new CardValue(v);
         this.visibility = "false";
+        this.inOut = true;
+        this.placeId = 0;
+    }
+    public void setOut(int id){
+        this.inOut = false;
+        this.placeId = id;
+    }
+    public String getName(){
+        return this.value.getTitle()+" of "+this.color.getTitle();
     }
     public int getId(){
         return this.id;

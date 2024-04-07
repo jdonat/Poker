@@ -17,5 +17,12 @@ public class Table{
     public int getId(){
         return this.id;
     }
-
+    public ArrayList<Player> getPlayerList(){
+        return this.players;
+    }
+    public void distributeNextCard(int place){
+        if(place>-1){
+            this.players.get(place).takeCard(this.deck.getNextCard(place));
+        }
+    }
 }
