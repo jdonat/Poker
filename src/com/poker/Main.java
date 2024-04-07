@@ -8,28 +8,41 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Objects;
 import java.util.Scanner;
-import com.poker.Client;
-import com.poker.Server;
+
+import com.poker.User;
+
+import com.poker.Game;
 public class Main {
 
+    private void startGame(){
+
+    }
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
-        Server server;
-        Client client;
+
+        User user;
+        Game game;
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("1 for Host // 2 for Join // 3 for settings");
+        System.out.println("1 for Solo Mode // 2 for Host // 3 for Join // 4 for settings");
 
         String choice = myObj.nextLine();  // Read user input
         System.out.println(choice);
-        if(Objects.equals(choice, "1"))
+        if(Objects.equals(choice, "1")) {
+            System.out.println("Solo mode");
+            game = new Game(new User());
+            game.launchSolo();
+        }
+        if(Objects.equals(choice, "2"))
         {
             System.out.println("Server start");
-            server = new Server();
-            server.main();
+
         }
-        if(Objects.equals(choice, "2")){
+        if(Objects.equals(choice, "3")){
             System.out.println("Client start");
-            client = new Client();
-            client.main();
+
+        }
+        if(Objects.equals(choice, "4")){
+            System.out.println("Settings menu");
+
         }
     }
 }

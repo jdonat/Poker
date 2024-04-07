@@ -1,16 +1,21 @@
 package com.poker;
 import java.util.ArrayList;
 
-public class Table {
+public class Table{
+    private int id;
     private Deck deck;
     private ArrayList<Player> players;
-    public Table(int PlayerNb, ArrayList<String> playersName){
-        deck = new Deck();
-        players = new ArrayList<Player>();
-        int i = 0;
-        for(String name : playersName){
-            players.add(new Player(i, name, true, 3000));
-            i++;
-        }
+    private int plNb;
+    private int status;
+    public Table(int ind, ArrayList<Player> players){
+        this.id = ind;
+        this.deck = new Deck();
+        this.players = players;
+        this.plNb = players.size();
+        this.status = 1;
     }
+    public int getId(){
+        return this.id;
+    }
+
 }
