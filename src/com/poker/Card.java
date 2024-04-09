@@ -13,7 +13,7 @@ public class Card {
         this.value = new CardValue(v);
         this.visibility = "false";
         this.inOut = true;
-        this.placeId = 0;
+        this.placeId = -1;
     }
     public void setOut(int id){
         this.inOut = false;

@@ -9,12 +9,14 @@ public class Tournament extends Thread{
     private GameConfig config;
     private int playerPerTable;
     private ArrayList<Thread> dealerList;
+    private int blindLevel;
     public Tournament(ArrayList<Player> plList, GameConfig gmCfg){
         this.playerList = plList;
         this.config = gmCfg;
         this.playerPerTable = DefaultConfig.playerNb;
         this.tableList = new ArrayList<Table>();
         this.dealerList = new ArrayList<Thread>();
+        this.blindLevel = 1;
     }
     public void startTournament(){
         int tableNb = 1;
@@ -38,7 +40,7 @@ public class Tournament extends Thread{
             }
         }
         Logger.Log("Tournament start !");
-        Logger.Log(Integer.toString(playerCnt)+" players on "+Integer.toString(tableCnt)+" tables : "+Integer.toString(this.playerPerTable)+" players per table");
+        Logger.Log(Integer.toString(playerCnt+1)+" players on "+Integer.toString(tableCnt)+" tables : "+Integer.toString(this.playerPerTable)+" players per table");
     }
     public void Play(){
         for(Table tb : this.tableList){

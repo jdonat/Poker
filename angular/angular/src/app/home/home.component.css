@@ -1,0 +1,21 @@
+.home-menu {
+  background-color: darkgrey;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  max-width: 400px;
+}
+.home-menu-section {
+  padding: 20px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+}
+.home-menu-section:hover {
+  background-color: burlywood;
+}
+.home-menu-section p{
+  font-weight: bold;
+  color: darkred;
+}
